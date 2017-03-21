@@ -50,7 +50,7 @@ Q = @(x) 0.5*erfc(x/sqrt(2));
 syms v
 for w = 1:length(SNR)
     f = @(v) (1 - Q(v/sigma(w)))^k * exp(-(v-1)^2/(2*sigma(w)^2)) * Q((v-1)/sigma(w))^(n-1);
-    p_e(w) = 1- n/(sqrt(2*pi)*sigma(w))*double(vpa(int(f(v),v,0,Inf),5));
+    p_e(w) = 1- n/(sqrt(2*pi)*sigma(w))*double(vpa(int(f(v),v,-Inf,Inf),5));
 end
 
 %% Plot Results
